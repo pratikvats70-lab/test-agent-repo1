@@ -1,0 +1,52 @@
+plugins {
+    id("java")
+    id("org.springframework.boot") version "3.5.0"
+    id("io.spring.dependency-management") version "1.1.7"
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(23))
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springAiVersion = "1.1.7"
+}
+
+dependencies {
+
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+    // Ensure AspectJ runtime/weaver are available for compile-time analysis and runtime weaving
+    implementation 'org.aspectj:aspectjweaver:1.9.9.1'
+    implementation 'org.aspectj:aspectjrt:1.9.9.1'
+
+    implementation("org.springframework.ai:spring-ai-starter-model-ollama")
+
+    implementation 'org.springframework.ai:spring-ai-starter-mcp-server-webmvc'
+
+    implementation 'org.kohsuke:github-api:1.330'
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.ai:spring-ai-bom:${property("springAiVersion")}")
+    }
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

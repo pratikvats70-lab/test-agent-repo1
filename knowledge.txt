@@ -1,0 +1,13 @@
+Kafka Topics store events.
+
+Kafka Consumer Groups provide parallel consumption.
+
+Consumers belonging to the same group share workload.
+
+Offsets are used to track consumer progress.
+
+Spring Boot services should use constructor injection.
+
+Use Lombok @Slf4j for logging.
+
+Field injection should be avoided.

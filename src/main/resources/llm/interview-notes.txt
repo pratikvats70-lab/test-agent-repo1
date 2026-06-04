@@ -1,0 +1,3 @@
+Kafka Topic stores events.
+Kafka Consumer reads events.
+Kafka Partition provides scalability.

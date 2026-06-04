@@ -1,0 +1,17 @@
+spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: qwen3:1.7b
+      embedding:
+        model: nomic-embed-text
+    mcp:
+      server:
+              enabled: true
+              name: github-mcp-server
+              version: 1.0.0
+
+
+server:
+  port: 8080

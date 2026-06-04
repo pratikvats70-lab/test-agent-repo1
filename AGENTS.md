@@ -17,6 +17,19 @@ Essential commands (Windows PowerShell)
 
 Note: this project does not apply the `application` plugin, so `gradlew run` is not available by default.
 
+Java runtime requirement
+- This project (Spring Boot 3 / some Gradle plugins used here) requires a Java 17+ runtime to configure and build.
+- If you see an error like "Dependency requires at least JVM runtime version 17. This build uses a Java 8 JVM", it means Gradle is running on an older Java installation.
+- Fix options:
+  - Install a JDK 17 or newer and set the `JAVA_HOME` environment variable to point to it, and ensure `java` on your PATH resolves to that JDK.
+	- Example (PowerShell):
+	  - setx JAVA_HOME "C:\\Program Files\\Java\\jdk-17"
+	  - Restart PowerShell and verify with: `java -version` and `echo $Env:JAVA_HOME`
+  - Or set Gradle's JVM explicitly for this project by creating/updating `gradle.properties` in the project root with:
+	- `org.gradle.java.home=C:\\Path\\To\\jdk-17`  (use an absolute path to a JDK 17+ installation on Windows)
+  - After updating, run the wrapper: `.\gradlew --version` then `.\gradlew build`.
+
+
 Code layout & important files
 - `build.gradle.kts` — dependency and test configuration (uses JUnit BOM + Jupiter). Tests run with `useJUnitPlatform()`.
 - `settings.gradle.kts` — root project name set to `Interview`.
