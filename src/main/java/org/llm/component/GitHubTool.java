@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class GitHubTool {
 
-    @Value("${github.token}")
+    @Value("${github.token:}")
     private String token;
 
     @Tool(description = "Read README from a GitHub repository")
